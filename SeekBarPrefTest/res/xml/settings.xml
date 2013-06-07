@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<PreferenceScreen 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myns="myns">
+
+    <!-- 
+    <CheckBoxPreference 
+            android:key="check"
+            android:title="Test Check"
+            android:summary="Text Check Summary"/>
+    -->
+    
+    <com.example.SeekBarPreference 
+            android:key="numberElemens" 
+            android:title="Test" 
+            android:summary="Test Summary" 
+            android:defaultValue="30" 
+            android:max="100"
+            myns:min="1"
+            myns:unitsRight="items"/>
+        
+</PreferenceScreen>

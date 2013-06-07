@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<preference-headers xmlns:android="http://schemas.android.com/apk/res/android">
+    <header android:fragment="com.example.SettingsActivity$Fragment"
+            android:title="Fragment"
+            android:summary="Fragment Summary" />
+</preference-headers>
