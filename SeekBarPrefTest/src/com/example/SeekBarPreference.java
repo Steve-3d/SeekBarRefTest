@@ -19,7 +19,6 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
     
     private int mMaxValue = 100;
     private int mMinValue = 0;
-    private boolean mShowValue = true;
     private int mCurrentValue;
     private String mUnitsText = "";
 
@@ -49,7 +48,6 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
     private void setValuesFromXml(AttributeSet attrs) {
         mMaxValue = attrs.getAttributeIntValue(ANDROIDNS, "max", 100);
         mMinValue = attrs.getAttributeIntValue(MYNS, "min", 0);
-        mShowValue = attrs.getAttributeBooleanValue(MYNS, "showValue", true);
         mUnitsText = getAttributeStringValue(attrs, MYNS, "unitsRight", "");
     }
     
@@ -73,13 +71,9 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
         mSeekBar.setProgress(mCurrentValue + mMinValue);
         mSeekBar.setOnSeekBarChangeListener(this);
         
-        if(mShowValue) {
-            mStatusText.setText(String.valueOf(mCurrentValue));
-            mStatusText.setMinimumWidth(30);
-            mUnitsRight.setText(mUnitsText);
-        } else {
-            mUnitsRight.setText("");
-        }
+        mStatusText.setText(String.valueOf(mCurrentValue));
+        mStatusText.setMinimumWidth(30);
+        mUnitsRight.setText(mUnitsText);
     }
 
     @Override
@@ -101,7 +95,7 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
         // change accepted, store it
         mCurrentValue = newValue;
 
-        if(mStatusText!=null && mShowValue) {
+        if(mStatusText!=null) {
             mStatusText.setText(String.valueOf(mCurrentValue));
         }
         
@@ -115,7 +109,6 @@ public class SeekBarPreference extends Preference implements OnSeekBarChangeList
     public void onStopTrackingTouch(SeekBar seekBar) {
         notifyChanged();
     }
-
 
     @Override 
     protected Object onGetDefaultValue(TypedArray ta, int index){
